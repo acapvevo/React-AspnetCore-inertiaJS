@@ -1,25 +1,28 @@
-import "./bootstrap";
+import React from 'react'
+import { Provider } from 'react-redux'
+import { createRoot } from 'react-dom/client'
+import 'core-js'
 
-import "@mantine/core/styles.css";
+import './bootstrap'
+import store from './store'
+import './scss/style.scss'
 
-import React from "react";
-import { createRoot } from "react-dom/client";
-import { createInertiaApp } from "@inertiajs/react";
-import { resolvePageComponent } from "laravel-vite-plugin/inertia-helpers";
+import { createInertiaApp } from '@inertiajs/react'
+import { resolvePageComponent } from 'laravel-vite-plugin/inertia-helpers'
 
-const appName =
-  window.document.getElementsByTagName("title")[0]?.innerText || "NickSoftware";
+const appName = window.document.getElementsByTagName('title')[0]?.innerText || 'NickSoftware'
 
 createInertiaApp({
   title: (title) => `${title} - ${appName}`,
   resolve: (name) =>
-    resolvePageComponent(
-      `./Pages/${name}.jsx`,
-      import.meta.glob("./Pages/**/*.jsx")
-    ),
+    resolvePageComponent(`./Pages/${name}.jsx`, import.meta.glob('./Pages/**/*.jsx')),
 
   setup({ el, App, props }) {
-    const root = createRoot(el);
-    root.render(<App {...props} />);
+    const root = createRoot(el)
+    root.render(
+      <Provider store={store}>
+        <App {...props} />
+      </Provider>,
+    )
   },
-});
+})
