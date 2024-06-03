@@ -25,6 +25,11 @@ namespace ReactCore.Controllers.Template
             return Task.FromResult(Inertia.Render("Base/Cards"));
         }
 
+        public Task<Response> Collapses()
+        {
+            return Task.FromResult(Inertia.Render("Base/Collapses"));
+        }
+
         public Task<Response> Carousels()
         {
             return Task.FromResult(Inertia.Render("Base/Carousels"));

@@ -222,7 +222,7 @@ const nav = [
       {
         component: CNavItem,
         name: 'CoreUI Brands',
-        href: '/Icon/Buttons',
+        href: '/Icon/Brands',
       },
     ],
   },
@@ -256,7 +256,7 @@ const nav = [
   {
     component: CNavItem,
     name: 'Widgets',
-    href: '/Widgets',
+    href: '/Widget',
     icon: <CIcon icon={cilCalculator} customClassName="nav-icon" />,
     badge: {
       color: 'info',

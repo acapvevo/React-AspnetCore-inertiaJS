@@ -7,6 +7,8 @@ import 'simplebar-react/dist/simplebar.min.css'
 import { CBadge, CNavLink, CSidebarNav } from '@coreui/react'
 
 export const AppSidebarNav = ({ items }) => {
+  const currentLocation = window.location.pathname
+
   const navLink = (name, icon, badge, indent = false) => {
     return (
       <>
@@ -33,7 +35,7 @@ export const AppSidebarNav = ({ items }) => {
     return (
       <Component as="div" key={index}>
         {rest.to || rest.href ? (
-          <CNavLink {...rest}>
+          <CNavLink active={currentLocation.includes(rest.href)} {...rest}>
             {navLink(name, icon, badge, indent)}
           </CNavLink>
         ) : (
