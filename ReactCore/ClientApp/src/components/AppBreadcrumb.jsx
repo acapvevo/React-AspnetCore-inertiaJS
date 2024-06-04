@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link, usePage } from '@inertiajs/react'
 
 import routes from '../routes'
 
@@ -6,6 +7,7 @@ import { CBreadcrumb, CBreadcrumbItem } from '@coreui/react'
 
 const AppBreadcrumb = () => {
   const currentLocation = window.location.pathname
+  const { url } = usePage()
 
   const getRouteName = (pathname, routes) => {
     const currentRoute = routes.find((route) => route.path === pathname)
@@ -28,18 +30,19 @@ const AppBreadcrumb = () => {
     return breadcrumbs
   }
 
-  const breadcrumbs = getBreadcrumbs(currentLocation)
+  const breadcrumbs = getBreadcrumbs(url)
 
   return (
     <CBreadcrumb className="my-0">
-      <CBreadcrumbItem href="/">Home</CBreadcrumbItem>
+      <CBreadcrumbItem>
+        <Link href="/">Home</Link>
+      </CBreadcrumbItem>
       {breadcrumbs.map((breadcrumb, index) => {
-        return (
-          <CBreadcrumbItem
-            {...(breadcrumb.active ? { active: true } : { href: breadcrumb.pathname })}
-            key={index}
-          >
-            {breadcrumb.name}
+        return breadcrumb.active ? (
+          <CBreadcrumbItem key={index}>{breadcrumb.name}</CBreadcrumbItem>
+        ) : (
+          <CBreadcrumbItem key={index} active={breadcrumb.active}>
+            <Link href={breadcrumb.pathname}>{breadcrumb.name}</Link>
           </CBreadcrumbItem>
         )
       })}

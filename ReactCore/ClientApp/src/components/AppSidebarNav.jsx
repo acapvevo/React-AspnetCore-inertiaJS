@@ -1,5 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import { Link, usePage } from '@inertiajs/react'
 
 import SimpleBar from 'simplebar-react'
 import 'simplebar-react/dist/simplebar.min.css'
@@ -7,7 +8,7 @@ import 'simplebar-react/dist/simplebar.min.css'
 import { CBadge, CNavLink, CSidebarNav } from '@coreui/react'
 
 export const AppSidebarNav = ({ items }) => {
-  const currentLocation = window.location.pathname
+  const { url } = usePage()
 
   const navLink = (name, icon, badge, indent = false) => {
     return (
@@ -35,7 +36,7 @@ export const AppSidebarNav = ({ items }) => {
     return (
       <Component as="div" key={index}>
         {rest.to || rest.href ? (
-          <CNavLink active={currentLocation.includes(rest.href)} {...rest}>
+          <CNavLink as={Link} active={url.includes(rest.href)} {...rest}>
             {navLink(name, icon, badge, indent)}
           </CNavLink>
         ) : (

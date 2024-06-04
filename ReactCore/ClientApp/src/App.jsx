@@ -10,10 +10,10 @@ import './scss/style.scss'
 import { createInertiaApp } from '@inertiajs/react'
 import { resolvePageComponent } from 'laravel-vite-plugin/inertia-helpers'
 
-const appName = window.document.getElementsByTagName('title')[0]?.innerText || 'NickSoftware'
+const appName = window.document.getElementsByTagName('title')[0]?.innerText || 'InertiaReactASPNETCore'
 
 createInertiaApp({
-  title: (title) => `${title} - ${appName}`,
+  title: (title) => {return title ? `${title} - ${appName}` : appName},
   resolve: (name) =>
     resolvePageComponent(`./views/${name}.jsx`, import.meta.glob('./views/**/*.jsx')),
 
