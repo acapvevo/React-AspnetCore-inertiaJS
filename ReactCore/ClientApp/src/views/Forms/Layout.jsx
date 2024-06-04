@@ -426,4 +426,4 @@ Layouts.layout = (page) => {
   return <Layout>{page}</Layout>
 }
 
-export default Layout
+export default Layouts

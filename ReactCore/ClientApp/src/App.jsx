@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { StrictMode } from 'react'
 import { Provider } from 'react-redux'
 import { createRoot } from 'react-dom/client'
 import 'core-js'
@@ -20,9 +20,11 @@ createInertiaApp({
   setup({ el, App, props }) {
     const root = createRoot(el)
     root.render(
-      <Provider store={store}>
-        <App {...props} />
-      </Provider>,
+      <StrictMode>
+        <Provider store={store}>
+          <App {...props} />
+        </Provider>
+      </StrictMode>,
     )
   },
 })

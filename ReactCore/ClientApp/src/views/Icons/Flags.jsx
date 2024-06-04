@@ -1,6 +1,6 @@
 import React from 'react'
 import { CCard, CCardBody, CCardHeader, CRow } from '@coreui/react'
-import { getIconsView } from '../Brands.js'
+import { getIconsView } from './Brands'
 import { flagSet } from '@coreui/icons'
 import { DocsCallout } from 'src/components'
 import Layout from 'src/layout/Layout'

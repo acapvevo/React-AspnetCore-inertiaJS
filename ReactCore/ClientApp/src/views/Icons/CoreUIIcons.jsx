@@ -1,7 +1,7 @@
 import React from 'react'
 import { CCard, CCardBody, CCardHeader, CRow } from '@coreui/react'
 import { freeSet } from '@coreui/icons'
-import { getIconsView } from '../Brands.js'
+import { getIconsView } from './Brands'
 import { DocsCallout } from 'src/components'
 import Layout from 'src/layout/Layout'
 
