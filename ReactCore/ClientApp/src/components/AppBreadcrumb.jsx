@@ -38,11 +38,13 @@ const AppBreadcrumb = () => {
         <Link href="/">Home</Link>
       </CBreadcrumbItem>
       {breadcrumbs.map((breadcrumb, index) => {
-        return breadcrumb.active ? (
-          <CBreadcrumbItem key={index}>{breadcrumb.name}</CBreadcrumbItem>
-        ) : (
-          <CBreadcrumbItem key={index} active={breadcrumb.active}>
-            <Link href={breadcrumb.pathname}>{breadcrumb.name}</Link>
+        return (
+          <CBreadcrumbItem key={index}>
+            {breadcrumb.active ? (
+              breadcrumb.name
+            ) : (
+              <Link href={breadcrumb.pathname}>{breadcrumb.name}</Link>
+            )}
           </CBreadcrumbItem>
         )
       })}
