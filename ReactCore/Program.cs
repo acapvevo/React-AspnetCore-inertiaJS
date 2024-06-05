@@ -1,4 +1,7 @@
 using InertiaCore.Extensions;
+using SqlKata.Compilers;
+using SqlKata.Execution;
+using System.Data.SqlClient;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -10,6 +13,15 @@ builder.Services.AddViteHelper(opt =>
     opt.PublicDirectory = "wwwroot";
     opt.BuildDirectory = "build";
     opt.ManifestFilename = "manifest.json";
+});
+
+builder.Services.AddTransient<QueryFactory>((e) =>
+{
+    var connection = new SqlConnection(builder.Configuration.GetConnectionString("DefaultConnection"));
+    var compiler = new SqlServerCompiler();
+
+    return new QueryFactory(connection, compiler);
+
 });
 
 builder.Services.AddControllersWithViews();
